@@ -1,5 +1,5 @@
 #include "stack.hpp"
-#include <luajit-2.1/lua.hpp>
+#include "luaInc.h"
 #include <cassert>
 #include <cmath>
 

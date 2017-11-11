@@ -2,7 +2,7 @@
 #define __LUA_CONVERTER_HPP_ 
 
 #include "stack.hpp"
-#include <luajit-2.1/lua.hpp>
+#include "luaInc.h"
 #include <stdio.h>
 #include <string>
 #include "utils.hpp"
