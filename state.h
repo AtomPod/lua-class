@@ -1,11 +1,11 @@
 #ifndef __LUA_STATE_H_
 #define __LUA_STATE_H_ 
+#include "base.h"
 #include <cstddef>
 #include <cstdint>
 
 #define LUA_NAMESPACE lua
 
-struct lua_State;
 namespace LUA_NAMESPACE
 {
 	class State

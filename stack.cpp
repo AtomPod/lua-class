@@ -1,5 +1,5 @@
 #include "stack.hpp"
-#include "luaInc.h"
+#include "base.h"
 #include <cassert>
 #include <cmath>
 

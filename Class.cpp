@@ -1,4 +1,4 @@
-#include "Class.hpp"
+#include "class.hpp"
 
 namespace LUA_NAMESPACE
 {

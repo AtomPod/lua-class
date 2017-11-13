@@ -2,7 +2,7 @@
 #define __LUA_CONVERTER_HPP_ 
 
 #include "stack.hpp"
-#include "luaInc.h"
+#include "base.h"
 #include <stdio.h>
 #include <string>
 #include "utils.hpp"
@@ -33,7 +33,7 @@ namespace LUA_NAMESPACE
 	template <typename R , typename... Args>
 	struct NormalInvoker<R(Args...)>{
 
-		typedef typename FunctionType<R(Args...)>::f_type f_type; 
+		typedef typename function_type<R(Args...)>::f_type f_type; 
 
 		template <size_t... N>
 		static int callImpl(lua_State *vm , size_t offset ,f_type mem , 
@@ -51,7 +51,7 @@ namespace LUA_NAMESPACE
 
 	template <typename... Args>
 	struct NormalInvoker<void(Args...)> {
-		typedef typename FunctionType<void(Args...)>::f_type f_type; 
+		typedef typename function_type<void(Args...)>::f_type f_type; 
 
 		template <size_t... N>
 		static int callImpl(lua_State *vm , size_t offset ,f_type mem , 
@@ -92,7 +92,7 @@ namespace LUA_NAMESPACE
 
 	template <typename LAMBDA , typename R , typename... Args>
 	struct LambdaInvoker<R(Args...) , LAMBDA> {
-		//typedef typename FunctionType<void(Args...)>::f_type f_type; 
+		//typedef typename function_type<void(Args...)>::f_type f_type; 
 
 		template <size_t... N>
 		static int callImpl(lua_State *vm , size_t offset ,LAMBDA mem , 
@@ -111,7 +111,7 @@ namespace LUA_NAMESPACE
 
 	template <typename LAMBDA , typename... Args>
 	struct LambdaInvoker<void(Args...) , LAMBDA> {
-		//typedef typename FunctionType<void(Args...)>::f_type f_type; 
+		//typedef typename function_type<void(Args...)>::f_type f_type; 
 
 		template <size_t... N>
 		static int callImpl(lua_State *vm , size_t offset ,LAMBDA mem , 
@@ -223,7 +223,7 @@ namespace LUA_NAMESPACE
 					1 , 
 					object , 
 					mem , 
-					typename remove_all_extend_member<CPP_MEM>::type()
+					typename remove_all_member_modifier<CPP_MEM>::type()
 				);
 			};
 		}
