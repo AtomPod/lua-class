@@ -105,8 +105,7 @@ Stack::uintmax_t Stack::toUInt(const index_t &sidx , const bool &checked) const 
 Stack::intmax_t Stack::toInt(const index_t &sidx , const bool &checked) const {
 	#ifdef LUA_SUPPORT_INTEGER
 		lua_State *lvm = getVMState();
-		CHECK_ERROR_MESSAGE(lvm != nullptr && std::abs(sidx) <= size() , 
-							"Stack::toInt: assert failed");
+		CHECK_ERROR_MESSAGE(lvm != nullptr && std::abs(sidx) <= size() , "Stack::toInt: assert failed");
 		//return lua_tointeger(lvm, sidx);
 		return _RESULT_FROM_CONVERT_METHOD(checked , lua_tointeger(lvm, sidx) , luaL_checkinteger(lvm, sidx));
 	#else
